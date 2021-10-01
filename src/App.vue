@@ -25,6 +25,7 @@ export default {
 @import './assets/style/common';
   main {
     background-color: $mainColor100;
-    height: 100vh;
+    min-height: 100vh;
+    padding-top: $heightHeader;
   }
 </style>

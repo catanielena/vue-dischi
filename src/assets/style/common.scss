@@ -14,8 +14,13 @@ body, button, input {
     font-family: 'Roboto', sans-serif;
 }
 
+h4 {
+    font-size: 1.0625rem;
+    line-height: 1.1rem;
+}
+
 //container
-.container {
+.wrapper {
     max-width: 73rem;
 }
 

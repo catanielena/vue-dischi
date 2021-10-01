@@ -1,3 +1,13 @@
 //colors
 $mainColor100: #1e2d3b;
 $mainColor300: #2e3a46;
+$grey: #808080;
+//Header
+$padHeaderTB: .7rem;
+$padHeaderRL: 1.2rem;
+$heightLogo: 2.75rem;
+$heightHeader: $padHeaderTB * 2 + $heightLogo;
+//padding
+$gap-sm: .5rem;
+$gap: 1.25rem;
+$gapX2: $gap * 2;

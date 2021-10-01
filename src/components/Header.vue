@@ -23,11 +23,12 @@ export default {
         position: fixed;
         top: 0;
         width: 100%;
-        padding: .7rem 1.2rem;        
+        padding: $padHeaderTB $padHeaderRL;        
         background-color: $mainColor300;
+        z-index: 1;
 
         &__logo {
-            height: 2.75rem;
+            height: $heightLogo;
 
             img {
                 height: 100%;

@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Header/>
+    <Header :logoImg="require('./assets/img/spotify-logo.png')"/>
     <main>
       <Collection/>
     </main>
@@ -23,5 +23,8 @@ export default {
 
 <style lang="scss">
 @import './assets/style/common';
-
+  main {
+    background-color: $mainColor100;
+    height: 100vh;
+  }
 </style>

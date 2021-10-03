@@ -24,11 +24,11 @@ export default {
 @import '../assets/style/common';
     .album {
         $this: &;
-        height: 20rem;
+        height: 100%;
         flex-direction: column;
         background-color: $mainColor300;
         padding: $gap;
-        margin: $gap-sm;
+        margin: $gap-sm auto;
         text-align: center;
 
         .album__img {
@@ -56,7 +56,7 @@ export default {
         }
 
         .album__info {
-            margin: $gap 0;           
+            margin: $gap 0;        
             p {
                 display: block;
                 font-size: 1rem;

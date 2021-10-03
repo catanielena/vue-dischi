@@ -24,8 +24,16 @@ export default {
 <style lang="scss">
 @import './assets/style/common';
   main {
+    @include flex--SB-C;
     background-color: $mainColor100;
     min-height: 100vh;
-    padding-top: $heightHeader;
+    padding: $heightHeader 0 0 0;
+  }
+
+  @media screen and (max-width: 768px) {
+      main {
+        align-content: flex-start;
+        padding: ($heightHeader + $gapX2) $gap-sm $gap $gap-sm;
+      }
   }
 </style>

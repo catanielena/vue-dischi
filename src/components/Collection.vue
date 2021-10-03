@@ -1,7 +1,7 @@
 <template>
     <section class="collection wrapper">
-        <div class="container">
-            <div class="d-flex justify-content-between flex-wrap row row-cols-2 row-cols-md-4">
+        <div class="container-fluid">
+            <div class="row row-cols-2 row-cols-md-3 d-flex align-content-center flex-wrap justify-content-center">
                 <div class="col" v-for="(item,i) in collection" :key="`album_${i}`">
                     <Album :item="item"/>
                 </div>
@@ -36,16 +36,19 @@ export default {
 @import '../assets/style/common';
     .collection {
         margin: auto;
-        padding: $gapX2;
+        .container {
+            margin: auto;
+            height: 100%;
+        }
         .row {
-
             @include media-breakpoint-up(lg) {
                 @include row-cols(5);
             }
         }
 
-        .col {
-            // margin: $gap;
+        .col {      
+            min-height: 18rem;
+            margin-bottom: $gap;
         }
     }
 </style>

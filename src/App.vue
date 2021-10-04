@@ -2,7 +2,7 @@
   <div id="app">
     <Header :logoImg="require('./assets/img/spotify-logo.png')" :genre="genre" :author="author" @selectedGenre="getSelectedGenre" @selectedAuthor="getSelectedAuthor"/>
     <main>
-      <Collection :selectedGenre="selectedGenre" :selectedAuthor="selectedAuthor" @albumData="getData"/>
+      <Collection :selectedGenre="selectedGenre" :selectedAuthor="selectedAuthor" @albumAuthor="getAuthor" @albumGenre="getGenre"/>
     </main>
   </div>
 </template>
@@ -23,7 +23,7 @@ export default {
       selectedGenre: "",
       selectedAuthor: "",
       genre: [],
-      author: []
+      author: [],
     }
   },
   methods: {
@@ -33,15 +33,23 @@ export default {
     getSelectedAuthor(e) {
       this.selectedAuthor = e
     },
-    getData(data) {
-      data.forEach(e => {
-        if(this.genre.includes(e.genre) == false && this.author.includes(e.author) == false) {
-          this.genre.push(e.genre);
-          this.author.push(e.author)
-        }
+    getAuthor(e) {
+      this.author = e
+    },
+    getGenre(e) {
+      this.genre = e
+    },
+    // getData(data) {
+    //   data.forEach(e => {
+    //     if(this.genre.includes(e.genre) == false) {
+    //       this.genre.push(e.genre)
+    //     } 
+    //     if(this.author.includes(e.author) == false) {
+    //       this.author.push(e.author)
+    //     }
 
-      });
-    }
+    //   });
+    // }
   }
 }
 </script>

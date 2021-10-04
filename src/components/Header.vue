@@ -4,12 +4,16 @@
             <img :src='logoImg' alt="spotify_logo">
         </div>
         <div class="filter">
+            <label for="genre">Select the genre</label>
             <select name="genre" id="genre" v-model="genreSelected" @change='$emit("selectedGenre", genreSelected)'>
-                <option value="">Select the genre</option>
+                <option selected disabled>Select the genre</option>
+                <option value="">All</option>
                 <option :value="item" v-for="(item, i) in genre" :key="i">{{item}}</option>
             </select> 
+            <label for="author">Select the author</label>
             <select name="author" id="author" v-model="authorSelected" @change='$emit("selectedAuthor", authorSelected)'>
-                <option value="">Select the author</option>
+                <option selected disabled>Select the author</option>
+                <option value="">All</option>
                 <option :value="item" v-for="(item, i) in author" :key="i">{{item}}</option>
             </select> 
         </div>
@@ -23,8 +27,7 @@ export default {
     props: {
         logoImg: String,
         genre: Array,
-        author: Array,
-        data: Object
+        author: Array
     },
     data() {
         return {
@@ -42,11 +45,12 @@ export default {
         $this: &;
         @include flex--SB-C;
         position: fixed;
+        z-index: 1;
         top: 0;
         width: 100%;
         padding: $padHeaderTB $padHeaderRL;        
         background-color: $mainColor300;
-        z-index: 1;
+        color: #fff;
 
         &__logo {
             height: $heightLogo;

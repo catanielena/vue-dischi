@@ -25,8 +25,7 @@ export default {
     },
     data() {
         return {
-            collection: [],
-            colFiltered: []
+            collection: []
         } 
     },
     created() {
@@ -34,14 +33,28 @@ export default {
             .get('https://flynn.boolean.careers/exercises/api/array/music')
             .then(e => {
                 this.collection = e.data.response;
-                this.$nextTick(() => {
-                    this.$emit("albumData", this.filterCollection)
-                })
+                // this.$nextTick(() => {
+                //     this.$emit("albumData", this.filterCollection)
+                // })
             })
     },
     computed: {
         filterCollection() {
-            return this.collection.filter((e) => e.genre.includes(this.selectedGenre) && e.author.includes(this.selectedAuthor));
+            let clone = this.collection.filter((e) => e.genre.includes(this.selectedGenre) && e.author.includes(this.selectedAuthor));
+            let genre = [];
+            let author = []
+            clone.forEach(e => {
+                if(genre.includes(e.genre) == false) {
+                genre.push(e.genre)
+                } 
+                if(author.includes(e.author) == false) {
+                author.push(e.author)
+                }
+
+            });
+            this.$emit("albumGenre", genre);
+            this.$emit("albumAuthor", author);
+            return clone;
         }
     }
 }

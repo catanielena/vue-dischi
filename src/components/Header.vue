@@ -80,5 +80,9 @@ export default {
     .header {
         flex-direction: column;
     }
+    .filter {
+            justify-content: center;
+            text-align: center;
+    }
 }
 </style>

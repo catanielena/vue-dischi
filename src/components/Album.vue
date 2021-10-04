@@ -67,4 +67,10 @@ export default {
             }
         }
     }
+
+@media screen and (max-width: 576px) {
+    .album {
+        width: 100%;
+    }
+}
 </style>

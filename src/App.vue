@@ -66,7 +66,7 @@ export default {
   @media screen and (max-width: 768px) {
       main {
         align-content: flex-start;
-        padding: ($heightHeader + $gapX2) $gap-sm $gap $gap-sm;
+        padding: 8.75rem $gap-sm $gap $gap-sm;
       }
   }
 </style>

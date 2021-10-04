@@ -5,9 +5,7 @@
         </div>
        <select name="genre" id="genre" v-model="genreSelected" @change='$emit("selected", genreSelected)'>
            <option value="">Select the genre</option>
-           <option value="Pop">Pop</option>
-           <option value="Rock">Rock</option>
-           <option value="Jazz">Jazz</option>
+           <option :value="item" v-for="(item, i) in genre" :key="i">{{item}}</option>
         </select> 
     </header>
 </template>
@@ -16,7 +14,8 @@
 export default {
     name: "Header",
     props: {
-        logoImg: String
+        logoImg: String,
+        genre: Array
     },
     data() {
         return {

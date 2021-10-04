@@ -1,8 +1,8 @@
 <template>
   <div id="app">
-    <Header :logoImg="require('./assets/img/spotify-logo.png')" @selected="getSelectedValue"/>
+    <Header :logoImg="require('./assets/img/spotify-logo.png')" :genre="genre" @selected="getSelectedValue"/>
     <main>
-      <Collection :selectedValue="selectedValue"/>
+      <Collection :selectedValue="selectedValue" @albumData="getGenre"/>
     </main>
   </div>
 </template>
@@ -20,12 +20,20 @@ export default {
   },
   data() {
     return {
-      selectedValue: ""
+      selectedValue: "",
+      genre: []
     }
   },
   methods: {
     getSelectedValue(e) {
       this.selectedValue = e
+    },
+    getGenre(data) {
+      data.forEach(e => {
+        if(this.genre.includes(e.genre) == false) {
+          this.genre.push(e.genre)
+        }
+      });
     }
   }
 }

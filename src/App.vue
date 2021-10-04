@@ -1,8 +1,8 @@
 <template>
   <div id="app">
-    <Header :logoImg="require('./assets/img/spotify-logo.png')"/>
+    <Header :logoImg="require('./assets/img/spotify-logo.png')" @selected="getSelectedValue"/>
     <main>
-      <Collection/>
+      <Collection :selectedValue="selectedValue"/>
     </main>
   </div>
 </template>
@@ -17,6 +17,16 @@ export default {
   components: {
     Header,
     Collection
+  },
+  data() {
+    return {
+      selectedValue: ""
+    }
+  },
+  methods: {
+    getSelectedValue(e) {
+      this.selectedValue = e
+    }
   }
 }
 </script>

@@ -37,6 +37,7 @@ export default {
             width: 100%;
 
             img {
+                @include objFit--C-T;
                 position: absolute;
                 left: 0;
                 width: 100%;

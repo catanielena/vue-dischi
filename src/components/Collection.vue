@@ -2,7 +2,7 @@
     <section class="collection wrapper">
         <div class="container-fluid">
             <div class="row row-cols-2 row-cols-md-3 d-flex align-content-center flex-wrap justify-content-center">
-                <div class="col" v-for="(item,i) in collection" :key="`album_${i}`">
+                <div class="col" v-for="(item,i) in filterCollection" :key="`album_${i}`">
                     <Album :item="item"/>
                 </div>
             </div>
@@ -19,15 +19,23 @@ export default {
     components: {
         Album
     },
+    props: {
+        selectedValue: String,
+    },
     data() {
         return {
-            collection: null
+            collection: []
         } 
     },
-    mounted() {
+    created() {
         axios
             .get('https://flynn.boolean.careers/exercises/api/array/music')
             .then(e => this.collection = e.data.response);
+    },
+    computed: {
+        filterCollection() {
+            return this.collection.filter((e) => e.genre.includes(this.selectedValue));
+        }
     }
 }
 </script>
@@ -48,6 +56,7 @@ export default {
 
         .col {      
             min-height: 18rem;
+            flex-grow: 1;
             margin-bottom: $gap;
         }
     }

@@ -2,7 +2,7 @@
     <section class="collection wrapper">
         <div class="container-fluid">
             <div class="row row-cols-2 row-cols-md-3 d-flex align-content-center flex-wrap justify-content-center">
-                <div class="col" v-for="(item,i) in filterCollection" :key="`album_${i}`" @hook:mounted="$emit('albumData', this.collection)">
+                <div class="col" v-for="(item,i) in filterCollection" :key="`album_${i}`">
                     <Album :item="item"/>
                 </div>
             </div>
@@ -20,11 +20,13 @@ export default {
         Album
     },
     props: {
-        selectedValue: String
+        selectedGenre: String,
+        selectedAuthor: String
     },
     data() {
         return {
-            collection: []
+            collection: [],
+            colFiltered: []
         } 
     },
     created() {
@@ -33,13 +35,13 @@ export default {
             .then(e => {
                 this.collection = e.data.response;
                 this.$nextTick(() => {
-                    this.$emit("albumData", this.collection)
+                    this.$emit("albumData", this.filterCollection)
                 })
             })
     },
     computed: {
         filterCollection() {
-            return this.collection.filter((e) => e.genre.includes(this.selectedValue));
+            return this.collection.filter((e) => e.genre.includes(this.selectedGenre) && e.author.includes(this.selectedAuthor));
         }
     }
 }

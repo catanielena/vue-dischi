@@ -3,10 +3,17 @@
         <div class="header__logo">
             <img :src='logoImg' alt="spotify_logo">
         </div>
-       <select name="genre" id="genre" v-model="genreSelected" @change='$emit("selected", genreSelected)'>
-           <option value="">Select the genre</option>
-           <option :value="item" v-for="(item, i) in genre" :key="i">{{item}}</option>
-        </select> 
+        <div class="filter">
+            <select name="genre" id="genre" v-model="genreSelected" @change='$emit("selectedGenre", genreSelected)'>
+                <option value="">Select the genre</option>
+                <option :value="item" v-for="(item, i) in genre" :key="i">{{item}}</option>
+            </select> 
+            <select name="author" id="author" v-model="authorSelected" @change='$emit("selectedAuthor", authorSelected)'>
+                <option value="">Select the author</option>
+                <option :value="item" v-for="(item, i) in author" :key="i">{{item}}</option>
+            </select> 
+        </div>
+        
     </header>
 </template>
 
@@ -15,11 +22,14 @@ export default {
     name: "Header",
     props: {
         logoImg: String,
-        genre: Array
+        genre: Array,
+        author: Array,
+        data: Object
     },
     data() {
         return {
-            genreSelected: ""
+            genreSelected: "",
+            authorSelected: ""
         }
     }
 }
@@ -44,6 +54,10 @@ export default {
             img {
                 height: 100%;
             }
+        }
+        
+        select {
+            margin: 0 $gap;
         }
 
     }

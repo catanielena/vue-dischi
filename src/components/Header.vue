@@ -4,18 +4,22 @@
             <img :src='logoImg' alt="spotify_logo">
         </div>
         <div class="filter">
-            <label for="genre">Select the genre</label>
-            <select name="genre" id="genre" v-model="genreSelected" @change='$emit("selectedGenre", genreSelected)'>
-                <option selected disabled>Select the genre</option>
-                <option value="">All</option>
-                <option :value="item" v-for="(item, i) in genre" :key="i">{{item}}</option>
-            </select> 
-            <label for="author">Select the author</label>
-            <select name="author" id="author" v-model="authorSelected" @change='$emit("selectedAuthor", authorSelected)'>
-                <option selected disabled>Select the author</option>
-                <option value="">All</option>
-                <option :value="item" v-for="(item, i) in author" :key="i">{{item}}</option>
-            </select> 
+            <div class="filter__item">
+                <label for="genre">Select the genre</label>
+                <select name="genre" id="genre" v-model="genreSelected" @change='$emit("selectedGenre", genreSelected)'>
+                    <option selected disabled>Select the genre</option>
+                    <option value="">All</option>
+                    <option :value="item" v-for="(item, i) in genre" :key="i">{{item}}</option>
+                </select>
+            </div>
+            <div class="filter__item">      
+                <label for="author">Select the author</label>
+                <select name="author" id="author" v-model="authorSelected" @change='$emit("selectedAuthor", authorSelected)'>
+                    <option selected disabled>Select the author</option>
+                    <option value="">All</option>
+                    <option :value="item" v-for="(item, i) in author" :key="i">{{item}}</option>
+                </select> 
+            </div> 
         </div>
         
     </header>
@@ -59,11 +63,22 @@ export default {
                 height: 100%;
             }
         }
+
+        .filter {
+                display: flex;
+                justify-content: flex-end;
+                align-items: center;
+                margin: $gap 0;
+        }
         
         select {
             margin: 0 $gap;
         }
 
     }
-
+@media screen and (max-width: 768px) {
+    .header {
+        flex-direction: column;
+    }
+}
 </style>

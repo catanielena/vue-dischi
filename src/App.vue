@@ -2,7 +2,7 @@
   <div id="app">
     <Header :logoImg="require('./assets/img/spotify-logo.png')" :genre="genre" :author="author" @selectedGenre="getSelectedGenre" @selectedAuthor="getSelectedAuthor"/>
     <main>
-      <Collection :selectedGenre="selectedGenre" :selectedAuthor="selectedAuthor" @albumAuthor="getAuthor" @albumGenre="getGenre"/>
+      <Collection :selectedGenre="selectedGenre" :selectedAuthor="selectedAuthor" @albumData="getData"/>
     </main>
   </div>
 </template>
@@ -33,23 +33,10 @@ export default {
     getSelectedAuthor(e) {
       this.selectedAuthor = e
     },
-    getAuthor(e) {
-      this.author = e
-    },
-    getGenre(e) {
-      this.genre = e
-    },
-    // getData(data) {
-    //   data.forEach(e => {
-    //     if(this.genre.includes(e.genre) == false) {
-    //       this.genre.push(e.genre)
-    //     } 
-    //     if(this.author.includes(e.author) == false) {
-    //       this.author.push(e.author)
-    //     }
-
-    //   });
-    // }
+    getData(g, a) {
+      this.author = a
+      this.genre = g
+    }
   }
 }
 </script>

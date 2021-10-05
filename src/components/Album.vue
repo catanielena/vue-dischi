@@ -25,7 +25,6 @@ export default {
     .album {
         $this: &;
         height: 100%;
-        width: 10rem;
         flex-direction: column;
         background-color: $mainColor300;
         padding: $gap;

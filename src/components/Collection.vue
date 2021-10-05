@@ -1,7 +1,7 @@
 <template>
     <section class="collection wrapper">
         <div class="container-fluid">
-            <div class="row row-cols-2 row-cols-md-3 d-flex align-content-center flex-wrap justify-content-center">
+            <div class="row row-cols-2 row-cols-md-3 d-flex align-content-center flex-wrap justify-content-left">
                 <div class="col" v-for="(item,i) in filterCollection" :key="`album_${i}`">
                     <Album :item="item"/>
                 </div>
@@ -40,10 +40,10 @@ export default {
     },
     computed: {
         filterCollection() {
-            let clone = this.collection.filter((e) => e.genre.includes(this.selectedGenre) && e.author.includes(this.selectedAuthor));
+            const filteredColl = this.collection.filter((e) => e.genre.toLowerCase().includes(this.selectedGenre.toLowerCase()) && e.author.toLowerCase().includes(this.selectedAuthor.toLowerCase()));
             let genre = [];
             let author = []
-            clone.forEach(e => {
+            filteredColl.forEach(e => {
                 if(genre.includes(e.genre) == false) {
                 genre.push(e.genre)
                 } 
@@ -52,9 +52,8 @@ export default {
                 }
 
             });
-            this.$emit("albumGenre", genre);
-            this.$emit("albumAuthor", author);
-            return clone;
+            this.$emit("albumData", genre, author);
+            return filteredColl;
         }
     }
 }
